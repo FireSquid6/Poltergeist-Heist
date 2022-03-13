@@ -28,7 +28,7 @@ cast_to = Vector2( 0, 16 )
 
 [node name="JumpBuffer" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 0, 32 )
+cast_to = Vector2( 0, 64 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
