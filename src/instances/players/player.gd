@@ -19,7 +19,6 @@ onready var can_jump = false
 onready var jumping = false
 onready var jump_time = 0.2
 onready var jump_spd = 400
-onready var jump_buffered = false
 
 
 func _physics_process(delta):
@@ -51,23 +50,21 @@ func _physics_process(delta):
 	
 	
 	# start jump if on floor and pressed
-	if on_floor and (Input.is_action_just_pressed("plr_jump") or jump_buffered):
-		if jump_buffered:
-			print("Jumped using a buffer ")
+	if on_floor and Input.is_action_pressed("plr_jump"):
 		on_jump()
 	# if already jumping
 	elif jumping:
 		if !Input.is_action_pressed("plr_jump"):
 			jumping = false
-			
 	# if not on the floor, just fall
 	elif !on_floor:
-		if $JumpBuffer.is_colliding() and Input.is_action_just_pressed("plr_jump"):
-			jump_buffered = true
 		velocity.y += GRV
 	
 	# move and get new velocity
-	velocity = move_and_slide(velocity, Vector2.RIGHT)
+	var string = str(velocity)
+	velocity = move_and_slide(velocity, Vector2.UP)
+	string += "\n" + str(velocity)
+	$Label.text = string
 
 
 # called whenever the player jumps
@@ -76,7 +73,6 @@ func on_jump():
 	
 	jumping = true
 	can_jump = false
-	jump_buffered = false
 	
 	$Timers/JumpTime.wait_time = jump_time
 	$Timers/JumpTime.start()

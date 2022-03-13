@@ -23,14 +23,25 @@ polygon = PoolVector2Array( -10, -24, -10, 10, 10, 10, 10, -24 )
 one_shot = true
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
+position = Vector2( 0, 10 )
 enabled = true
-cast_to = Vector2( 0, 16 )
+cast_to = Vector2( 0, 1 )
 
 [node name="JumpBuffer" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 64 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -7 )
 current = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 10.0
+margin_top = -25.0
+margin_right = 50.0
+margin_bottom = -11.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]
