@@ -1,36 +1,27 @@
 extends KinematicBody2D
 
 enum STATES {
-	MOVING,
-	JUMPING,
-	FALLING,
-	DASHING
+	CONTROLLED,
+	IDLE,
+	COMBINING
 }
 
-const GRV = 30
-onready var in_control = true
+onready var state = STATES.IDLE
 
 onready var velocity = Vector2(0,0)
-onready var accspd = 100
-onready var deaccspd = 100 
-onready var maxspd = 350
 onready var myspd = 0
+const accspd = 100
+const deaccspd = 100
+const maxspd = 300
 
 onready var can_jump = false
 onready var jumping = false
-onready var jump_time = 0.2
-onready var jump_spd = 400
+const jump_time = 0.2
+const jump_spd = 400
+const GRV = 30
 
 
-func _physics_process(delta):
-	# HORIZONTAL MOVEMENT
-	# get the horizontal input
-	var move = 0
-	var jump = false
-	if in_control:
-		move = int(Input.is_action_pressed("plr_right")) - int(Input.is_action_pressed("plr_left"))
-		jump = Input.is_action_pressed("plr_jump")
-	
+func process_movement(move, jump, delta):
 	# if moving, accelerate
 	if move != 0:
 		velocity.x += accspd * move
@@ -58,7 +49,7 @@ func _physics_process(delta):
 	if on_floor and jump:
 		on_jump()
 	# if already jumping
-	elif jumping:
+	if jumping:
 		if !jump:
 			jumping = false
 	# if not on the floor, just fall
@@ -67,9 +58,31 @@ func _physics_process(delta):
 	
 	# move and get new velocity
 	var string = str(velocity)
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity)
+	
 	string += "\n" + str(velocity)
 	$Label.text = string
+	
+	# return the collision data
+
+func _physics_process(delta):
+	match state:
+		STATES.CONTROLLED:
+			var move = int(Input.is_action_pressed("plr_right")) - int(Input.is_action_pressed("plr_left"))
+			var jump = Input.is_action_pressed("plr_jump")
+			
+			var collision = process_movement(move, jump, delta)
+			
+			$CollisionShape2D/Polygon2D.color = Color(1, 0, 0, 1)
+			
+			# handle pushing entities
+			if collision != null:
+				if collision.collider.get_collision_mask_bit(2): # if the collided object is a player
+					collision.collider.velocity = velocity
+			
+		STATES.IDLE:
+			$CollisionShape2D/Polygon2D.color = Color(1, 1, 1, 1)
+			process_movement(0, false, delta)
 
 
 # called whenever the player jumps
@@ -85,3 +98,11 @@ func on_jump():
 
 func _on_JumpTime_timeout():
 	jumping = false
+
+
+func activate():
+	state = STATES.CONTROLLED
+
+
+func deactivate():
+	state = STATES.IDLE

@@ -16,4 +16,24 @@ func _ready():
 	switch_player(0)
 
 func switch_player(new_index):
+	# deactivate all players
+	for player in player_list:
+		player.deactivate()
+	
+	# activate the new player
 	new_index = clamp(new_index, 0, len(player_list) - 1)
+	player_list[player_selected].activate()
+
+
+func _process(delta):
+	# if the input to switch the player is recieved
+	if Input.is_action_just_pressed("plr_switch"):
+		# update player_selected
+		player_selected += 1
+		if player_selected > len(player_list) - 1:
+			player_selected = 0
+		
+		# tell the player to start moving
+		switch_player(player_selected)
+		
+		
