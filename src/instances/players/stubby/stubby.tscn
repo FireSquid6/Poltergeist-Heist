@@ -3,9 +3,9 @@
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 16, 15.5 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Stubby" type="KinematicBody2D"]
 position = Vector2( -32, -64 )
 collision_layer = 2
 collision_mask = 7
@@ -25,12 +25,12 @@ cast_to = Vector2( 0, 1 )
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, 48 )
+position = Vector2( 16, 48.5 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
-position = Vector2( -1, 19.7119 )
-scale = Vector2( 1.5, 1.488 )
+position = Vector2( -1, 19.154 )
+scale = Vector2( 1.5, 1.46475 )
 polygon = PoolVector2Array( -10, -24, -10, -2.49459, 11.3333, -2.49459, 11.3333, -24 )
 
 [node name="Timers" type="Node" parent="."]

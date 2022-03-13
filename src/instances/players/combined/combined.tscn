@@ -3,13 +3,14 @@
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 32 )
+extents = Vector2( 32, 32 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Combined" type="KinematicBody2D"]
 position = Vector2( -32, -64 )
 collision_layer = 2
 collision_mask = 7
 script = ExtResource( 1 )
+jump_time = 0.05
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
 position = Vector2( 32, 64 )
@@ -18,19 +19,19 @@ cast_to = Vector2( 0, 1 )
 collision_mask = 3
 
 [node name="FloorDetector2" type="RayCast2D" parent="."]
-position = Vector2( 0, 64 )
+position = Vector2( -32, 64 )
 enabled = true
 cast_to = Vector2( 0, 1 )
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, 32 )
+position = Vector2( 0, 32 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
 position = Vector2( -1, 15.6159 )
 scale = Vector2( 1.5, 1.984 )
-polygon = PoolVector2Array( -10, -24, -10, 8.25812, 11.3333, 8.25812, 11.3333, -24 )
+polygon = PoolVector2Array( -20.6667, -24, -20.6667, 8.25811, 22, 8.25811, 22, -24 )
 __meta__ = {
 "_edit_lock_": true
 }

@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 enum STATES {
 	CONTROLLED,
@@ -51,10 +52,12 @@ func _physics_process(delta):
 			
 			# VERTICAL MOVEMENT
 			# start jump if on floor and pressed
-			if on_floor and jump:
-				on_jump()
+			if on_floor:
+				velocity.y = 0
+				if jump:
+					on_jump()
 			# if already jumping
-			if jumping:
+			elif jumping:
 				if !jump:
 					jumping = false
 			# if not on the floor, just fall
@@ -62,7 +65,19 @@ func _physics_process(delta):
 				velocity.y += GRV
 			
 			# move and get new velocity
-			velocity = move_and_slide(velocity)
+			move_and_slide(velocity)
+			if get_slide_count() > 0:
+				for i in get_slide_count():
+					# icky bad gross code
+					var crate = get_slide_collision(i).collider as Crate
+					var player = get_slide_collision(i).collider as Player
+					if on_floor:
+						if crate and crate.pushable:
+							crate.push(Vector2(velocity.x, 0))
+						elif player:
+							pass
+							#player.push(Vector2(velocity.x, 0))
+			
 			
 			# change color and text 
 			$CollisionShape2D/Polygon2D.color = Color(1, 0, 0, 1)
@@ -110,6 +125,13 @@ func _on_JumpTime_timeout():
 
 func state_set(new_state):
 	state = new_state
+	
+	if state == STATES.COMBINED:
+		visible = false
+		$CollisionShape2D.disabled = true
+	else:
+		visible = true
+		$CollisionShape2D.disabled = false
 	
 	match state:
 		STATES.IDLE:

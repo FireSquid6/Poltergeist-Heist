@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Crate",
+"language": "GDScript",
+"path": "res://instances/level_entities/crate/crate.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://instances/players/lanky/player.gd"
+} ]
+_global_script_class_icons={
+"Crate": "",
+"Player": ""
+}
+
 [application]
 
 config/name="Godot Wild Jam #43"
@@ -17,6 +33,10 @@ config/icon="res://icon.png"
 [audio]
 
 default_bus_layout=""
+
+[autoload]
+
+Global="*res://singletons/global.gd"
 
 [importer_defaults]
 

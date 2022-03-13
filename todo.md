@@ -1,6 +1,6 @@
 TODO:
  - [ ] Figure out a title
- - [ ] Player movement
+ - [x] Player movement
    - Two different players that can combine
    - When split:
      - Players can push and stand on eachother 
@@ -20,7 +20,7 @@ TODO:
      - [ ] Jump animation
      - [ ] Idle animation
    - [x] Basic player movement
-   - [ ] Control switching system
+   - [x] Control switching system
    - [ ] Combining system
  - [ ] Level Entities
    - [ ] Door
@@ -36,17 +36,18 @@ TODO:
      - [ ] Unpressed sprite
      - [ ] click sfx
    - [ ] Heavy button
-     - Can only be pressed by a combined player
+     - Can only be pressed by a combined player or a heavy box
      - [ ] code
      - [ ] pressed sprite
      - [ ] unpressed sprite
      - [ ] click sfx
-   - [ ] Switch
-     - Can be toggled on and off by any type of player
-     - [ ] code
-     - [ ] on sprite
-     - [ ] off sprite
-     - [ ] toggle sfx
+   - [x] Light box
+     - can be pushed by split or combined players
+     - [ ] wood box sprite
+   - [x] Heavy box
+     - can only be pushed by combined players
+     - [ ] metal box sprite
+     - [x] code
  - [ ] Level Design
    - Game should be beatable in around 5-15 minutes
  - [ ] Title screen
@@ -56,6 +57,7 @@ TODO:
      - Probably just stone bricks
    - [ ] Setpieces
      - Stuff like torches, windows, etc.
-     - Gives the background a bit offlare
+     - Gives the background a bit off flare
    - [ ] Background
      - Probably just a stone brick wall
+ - [ ] Level switching system
