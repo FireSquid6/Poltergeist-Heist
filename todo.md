@@ -1,0 +1,61 @@
+TODO:
+ - [ ] Figure out a title
+ - [ ] Player movement
+   - Two different players that can combine
+   - When split:
+     - Players can push and stand on eachother 
+     - One player is tall and can't fit into 1 cell high gaps, but jumps higher
+     - One player is short but can't jump high
+     - Each player has their own color
+     - Control is switched with a keypress
+   - When combined
+     - Large 2x2 player
+     - can press big buttons
+   - [ ] Sprites for split players
+     - [ ] Move animation
+     - [ ] Jump animation
+     - [ ] Idle animation
+   - [ ] Sprites for combined players
+     - [ ] Move animation
+     - [ ] Jump animation
+     - [ ] Idle animation
+   - [x] Basic player movement
+   - [ ] Control switching system
+   - [ ] Combining system
+ - [ ] Level Entities
+   - [ ] Door
+     - [ ] Code
+     - [ ] Open SFX
+     - [ ] Close SFX
+     - [ ] Open sprite
+     - [ ] Closed sprite
+   - [ ] Button
+     - Can be pressed by a split player
+     - [ ] code
+     - [ ] Pressed sprite
+     - [ ] Unpressed sprite
+     - [ ] click sfx
+   - [ ] Heavy button
+     - Can only be pressed by a combined player
+     - [ ] code
+     - [ ] pressed sprite
+     - [ ] unpressed sprite
+     - [ ] click sfx
+   - [ ] Switch
+     - Can be toggled on and off by any type of player
+     - [ ] code
+     - [ ] on sprite
+     - [ ] off sprite
+     - [ ] toggle sfx
+ - [ ] Level Design
+   - Game should be beatable in around 5-15 minutes
+ - [ ] Title screen
+ - [ ] Ambient Music
+ - [ ] Tilesets/backgrounds
+   - [ ] Foreground tileset
+     - Probably just stone bricks
+   - [ ] Setpieces
+     - Stuff like torches, windows, etc.
+     - Gives the background a bit offlare
+   - [ ] Background
+     - Probably just a stone brick wall

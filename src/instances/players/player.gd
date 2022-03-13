@@ -8,6 +8,7 @@ enum STATES {
 }
 
 const GRV = 30
+onready var in_control = true
 
 onready var velocity = Vector2(0,0)
 onready var accspd = 100
@@ -24,7 +25,11 @@ onready var jump_spd = 400
 func _physics_process(delta):
 	# HORIZONTAL MOVEMENT
 	# get the horizontal input
-	var move = int(Input.is_action_pressed("plr_right")) - int(Input.is_action_pressed("plr_left"))
+	var move = 0
+	var jump = false
+	if in_control:
+		move = int(Input.is_action_pressed("plr_right")) - int(Input.is_action_pressed("plr_left"))
+		jump = Input.is_action_pressed("plr_jump")
 	
 	# if moving, accelerate
 	if move != 0:
@@ -50,11 +55,11 @@ func _physics_process(delta):
 	
 	
 	# start jump if on floor and pressed
-	if on_floor and Input.is_action_pressed("plr_jump"):
+	if on_floor and jump:
 		on_jump()
 	# if already jumping
 	elif jumping:
-		if !Input.is_action_pressed("plr_jump"):
+		if !jump:
 			jumping = false
 	# if not on the floor, just fall
 	elif !on_floor:
