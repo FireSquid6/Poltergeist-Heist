@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://instances/players/player.gd" type="Script" id=1]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16.5, 20 )
+[ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 32 )
@@ -15,29 +12,20 @@ collision_mask = 7
 script = ExtResource( 1 )
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2( 16, 64 )
+position = Vector2( 32, 64 )
 enabled = true
 cast_to = Vector2( 0, 1 )
 collision_mask = 3
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="PushDetector" type="Area2D" parent="."]
-position = Vector2( 16, 32 )
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PushDetector"]
-position = Vector2( 0.5, 12 )
-shape = SubResource( 2 )
+[node name="FloorDetector2" type="RayCast2D" parent="."]
+position = Vector2( 0, 64 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 32 )
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
 position = Vector2( -1, 15.6159 )
@@ -52,11 +40,8 @@ __meta__ = {
 [node name="JumpTime" type="Timer" parent="Timers"]
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -24, -12 )
-current = true
-
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 10.0
 margin_top = -25.0
 margin_right = 50.0

@@ -18,11 +18,11 @@ func _ready():
 func switch_player(new_index):
 	# deactivate all players
 	for player in player_list:
-		player.deactivate()
+		player.state = player.STATES.IDLE
 	
 	# activate the new player
 	new_index = clamp(new_index, 0, len(player_list) - 1)
-	player_list[player_selected].activate()
+	player_list[player_selected].state = player_list[player_selected].STATES.CONTROLLED
 
 
 func _process(delta):
