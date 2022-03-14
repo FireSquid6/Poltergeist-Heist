@@ -3,7 +3,7 @@
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 31 )
+extents = Vector2( 15, 31 )
 
 [node name="Lanky" type="KinematicBody2D"]
 position = Vector2( -32, -64 )
@@ -13,16 +13,16 @@ script = ExtResource( 1 )
 jump_time = 0.1
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2( 32, 64 )
+position = Vector2( 31, 64 )
 enabled = true
 cast_to = Vector2( 0, 1 )
-collision_mask = 3
+collision_mask = 7
 
 [node name="FloorDetector2" type="RayCast2D" parent="."]
-position = Vector2( 0, 64 )
+position = Vector2( 1, 64 )
 enabled = true
 cast_to = Vector2( 0, 1 )
-collision_mask = 3
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 33 )

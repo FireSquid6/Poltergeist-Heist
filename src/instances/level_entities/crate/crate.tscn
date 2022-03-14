@@ -3,20 +3,37 @@
 [ext_resource path="res://instances/level_entities/crate/crate.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15, 15 )
+extents = Vector2( 15, 15.75 )
 
 [node name="Crate" type="KinematicBody2D"]
-collision_layer = 8
-collision_mask = 0
+collision_layer = 4
 script = ExtResource( 1 )
 heavy = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, -16 )
-shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
-position = Vector2( -16, 16 )
+[node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2( 0.5, 0.5 )
 color = Color( 0.188235, 0.0941176, 0.0941176, 1 )
 polygon = PoolVector2Array( 0, -64, 0, 0, 64, 0, 64, -64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 16, -15.75 )
+shape = SubResource( 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 1, 0 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+collision_mask = 3
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2( 31, 0 )
+enabled = true
+cast_to = Vector2( 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = -46.0
+margin_right = 40.0
+margin_bottom = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
