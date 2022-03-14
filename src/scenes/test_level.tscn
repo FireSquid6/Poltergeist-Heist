@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/level_entities/button/button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://instances/level_entities/toggleables/door/door.tscn" type="PackedScene" id=3]
 
 [node name="TestLevel" instance=ExtResource( 1 )]
 
-[node name="TileMap" parent="." index="0"]
-tile_data = PoolIntArray( -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0 )
+[node name="Foreground" parent="." index="0"]
+tile_data = PoolIntArray( -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -262141, 0, 0, -196605, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0 )
 
 [node name="Lanky" parent="Controller" index="1"]
 position = Vector2( -80, -56 )
 
 [node name="Button" parent="Entities" index="0" instance=ExtResource( 2 )]
+
+[node name="Door" parent="Entities" index="1" instance=ExtResource( 3 )]
+position = Vector2( 120, -64 )
+
+[connection signal="pressed" from="Entities/Button" to="Entities/Door" method="turn_on"]
+[connection signal="released" from="Entities/Button" to="Entities/Door" method="turn_off"]
 
 [editable path="Controller"]

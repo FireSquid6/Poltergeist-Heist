@@ -74,9 +74,8 @@ func _physics_process(delta):
 					if on_floor:
 						if crate and crate.pushable:
 							crate.push(Vector2(velocity.x, 0))
-						elif player:
-							pass
-							#player.push(Vector2(velocity.x, 0))
+						elif player and player.position.y <= position.y:
+							player.push(Vector2(velocity.x, 0))
 			
 			
 			# change color and text 
