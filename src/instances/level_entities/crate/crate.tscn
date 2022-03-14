@@ -6,8 +6,10 @@
 extents = Vector2( 15, 15 )
 
 [node name="Crate" type="KinematicBody2D"]
-collision_layer = 5
+collision_layer = 4
+collision_mask = 0
 script = ExtResource( 1 )
+heavy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, -16 )

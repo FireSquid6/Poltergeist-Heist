@@ -9,7 +9,7 @@ script = ExtResource( 1 )
 
 [node name="Indicator" type="Node" parent="."]
 
-[node name="Lank" parent="." instance=ExtResource( 2 )]
+[node name="Lanky" parent="." instance=ExtResource( 2 )]
 
 [node name="Stubby" parent="." instance=ExtResource( 3 )]
 position = Vector2( 9, -64 )
