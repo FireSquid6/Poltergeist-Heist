@@ -19,7 +19,7 @@ onready var can_jump = false
 onready var jumping = false
 export var jump_time = 0.2
 export var jump_spd = 400
-const GRV = 30
+export var GRV = 30
 
 
 func _physics_process(delta):
@@ -76,7 +76,6 @@ func _physics_process(delta):
 							crate.push(Vector2(velocity.x, 0))
 						elif player and player.position.y <= position.y:
 							player.push(Vector2(velocity.x, 0))
-			
 			
 			
 		STATES.IDLE:
