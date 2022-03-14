@@ -78,8 +78,6 @@ func _physics_process(delta):
 							player.push(Vector2(velocity.x, 0))
 			
 			
-			# change color and text 
-			$CollisionShape2D/Polygon2D.color = Color(1, 0, 0, 1)
 			
 		STATES.IDLE:
 			# move vertically
@@ -97,8 +95,6 @@ func _physics_process(delta):
 			# move
 			velocity = move_and_slide(velocity)
 			
-			# change color
-			$CollisionShape2D/Polygon2D.color = Color(1, 1, 1, 1)
 	
 	$Label.text = str(velocity)
 

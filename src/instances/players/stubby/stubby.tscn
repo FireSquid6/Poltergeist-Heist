@@ -1,37 +1,56 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
+[ext_resource path="res://resources/textures/chest1.png" type="Texture" id=2]
+[ext_resource path="res://resources/textures/chest2.png" type="Texture" id=3]
+[ext_resource path="res://resources/textures/chest3.png" type="Texture" id=4]
+[ext_resource path="res://instances/players/stubby/stubby_sprite.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 15.5 )
+extents = Vector2( 18, 12.5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walking",
+"speed": 8.0
+} ]
 
 [node name="Stubby" type="KinematicBody2D"]
-position = Vector2( -32, -64 )
 collision_layer = 2
 collision_mask = 7
 script = ExtResource( 1 )
 jump_time = 0.1
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2( 32, 64 )
+position = Vector2( 19, 16 )
 enabled = true
 cast_to = Vector2( 0, 1 )
 collision_mask = 3
 
 [node name="FloorDetector2" type="RayCast2D" parent="."]
-position = Vector2( 0, 64 )
+position = Vector2( -17, 16 )
 enabled = true
 cast_to = Vector2( 0, 1 )
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, 48.5 )
+position = Vector2( 1, 3.5 )
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
-position = Vector2( -1, 19.154 )
-scale = Vector2( 1.5, 1.46475 )
-polygon = PoolVector2Array( -10, -24, -10, -2.49459, 11.3333, -2.49459, 11.3333, -24 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "idle"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Timers" type="Node" parent="."]
 
@@ -39,7 +58,6 @@ polygon = PoolVector2Array( -10, -24, -10, -2.49459, 11.3333, -2.49459, 11.3333,
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
-visible = false
 margin_left = 10.0
 margin_top = -25.0
 margin_right = 50.0

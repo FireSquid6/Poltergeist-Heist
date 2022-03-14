@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://resources/temp_wall_ts.png" type="Texture" id=1]
+[ext_resource path="res://resources/textures/temp_wall_ts.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
