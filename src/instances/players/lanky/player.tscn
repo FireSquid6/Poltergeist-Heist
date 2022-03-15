@@ -6,20 +6,22 @@
 extents = Vector2( 15, 30 )
 
 [node name="Lanky" type="KinematicBody2D"]
-position = Vector2( -32, -64 )
 collision_layer = 2
 collision_mask = 7
 script = ExtResource( 1 )
 jump_time = 0.1
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 15, 47 )
+position = Vector2( -17, -17 )
 scale = Vector2( 1.5, 1.984 )
-polygon = PoolVector2Array( -10, -24.1935, -10, 8.56855, -9.37083, 8.56855, 11.3333, 8.56855, 11.3333, -24.1935 )
+polygon = PoolVector2Array( -10, -23.6895, -10, 8.56855, -9.37083, 8.56855, 11.3333, 8.56855, 11.3333, -23.6895 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, 34 )
+position = Vector2( -16, -30 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Timers" type="Node" parent="."]
 
@@ -27,15 +29,14 @@ shape = SubResource( 1 )
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
-margin_left = 10.0
-margin_top = -25.0
-margin_right = 50.0
-margin_bottom = -11.0
+margin_left = -40.0
+margin_top = -80.0
+margin_bottom = -66.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MergePosition" type="Position2D" parent="."]
-position = Vector2( 0, -1 )
+position = Vector2( -32, -64 )
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]

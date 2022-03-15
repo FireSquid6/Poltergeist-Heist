@@ -4,6 +4,10 @@ class_name Crate
 export var heavy = false
 
 
+func _init():
+	pushable = true
+
+
 func _physics_process(delta):
 	on_floor = is_on_floor()
 	

@@ -14,7 +14,8 @@ onready var floor_detector = get_node("MoveableManage/FloorDetector")
 
 
 func setup():
-	set_safe_margin(0.0001)
+	set_safe_margin(0.001)
+	set_collision_layer_bit(9, true)
 
 
 func _ready():
@@ -23,18 +24,20 @@ func _ready():
 
 func process_movement():
 	# fall
-	if !on_floor and do_gravity:
+	if do_gravity:
 		velocity.y += GRV
 	
 	# move
+	var pre_velocity = velocity
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 	# push
 	for i in get_slide_count():
-		var collided = get_slide_collision(i)
-		if collided as Movable:
-			if collided.pushable:
-				collided.push(velocity)
+		var collided = get_slide_collision(i).collider
+		if (collided as Movable != null) and (floor(collided.position.y) <= floor(position.y)):
+			if collided.push(Vector2(pre_velocity.x, 0), false):
+				velocity = pre_velocity
+				#move_and_slide(velocity)
 		
 	# get on floor
 	on_floor = is_on_floor()
@@ -42,7 +45,7 @@ func process_movement():
 
 func push(vel: Vector2, force: bool) -> bool:
 	if pushable and !force:
-		velocity += vel
+		move_and_slide(vel)
 		return true
 	else:
 		return false

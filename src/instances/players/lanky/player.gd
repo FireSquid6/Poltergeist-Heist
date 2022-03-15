@@ -18,6 +18,10 @@ export var jump_time = 0.2
 export var jump_spd = 400
 
 
+func _init():
+	pushable = true
+
+
 func _physics_process(delta):
 	match state:
 		STATES.CONTROLLED:
@@ -65,7 +69,7 @@ func _physics_process(delta):
 			
 		
 	process_movement()
-	$Label.text = str(velocity)
+	$Label.text = str(velocity) + " " + str(position) + "\n" + str(on_floor)
 
 
 # called whenever the player jumps
