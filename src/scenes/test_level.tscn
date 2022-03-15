@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/level_entities/button/button.tscn" type="PackedScene" id=2]
-[ext_resource path="res://instances/level_entities/toggleables/door/door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://instances/decoration/chair.tscn" type="PackedScene" id=4]
 [ext_resource path="res://instances/decoration/table.tscn" type="PackedScene" id=5]
 [ext_resource path="res://instances/decoration/torch.tscn" type="PackedScene" id=6]
@@ -15,22 +14,19 @@ tile_data = PoolIntArray( -393225, 0, 0, -393224, 0, 1, -393223, 0, 1, -393222, 
 
 [node name="Button" parent="Entities" index="0" instance=ExtResource( 2 )]
 
-[node name="Door" parent="Entities" index="1" instance=ExtResource( 3 )]
-position = Vector2( 96, -32 )
-
-[node name="RigidBody2D" parent="Entities" index="2" instance=ExtResource( 7 )]
+[node name="RigidBody2D" parent="Entities" index="1" instance=ExtResource( 7 )]
 position = Vector2( 160, -152 )
 
-[node name="RigidBody2D2" parent="Entities" index="3" instance=ExtResource( 7 )]
+[node name="RigidBody2D2" parent="Entities" index="2" instance=ExtResource( 7 )]
 position = Vector2( 192, -152 )
 
-[node name="RigidBody2D3" parent="Entities" index="4" instance=ExtResource( 7 )]
+[node name="RigidBody2D3" parent="Entities" index="3" instance=ExtResource( 7 )]
 position = Vector2( 224, -152 )
 
-[node name="RigidBody2D4" parent="Entities" index="5" instance=ExtResource( 7 )]
+[node name="RigidBody2D4" parent="Entities" index="4" instance=ExtResource( 7 )]
 position = Vector2( 256, -152 )
 
-[node name="RigidBody2D5" parent="Entities" index="6" instance=ExtResource( 7 )]
+[node name="RigidBody2D5" parent="Entities" index="5" instance=ExtResource( 7 )]
 position = Vector2( 160, -72 )
 
 [node name="Chair" parent="Decoration" index="0" instance=ExtResource( 4 )]
@@ -45,12 +41,8 @@ position = Vector2( -200, -16 )
 
 [node name="Torch" parent="Decoration" index="3" instance=ExtResource( 6 )]
 position = Vector2( -200, -72 )
-frame = 1
 
 [node name="Lanky" parent="Controller" index="1"]
 position = Vector2( -80, -56 )
-
-[connection signal="pressed" from="Entities/Button" to="Entities/Door" method="turn_on"]
-[connection signal="released" from="Entities/Button" to="Entities/Door" method="turn_off"]
 
 [editable path="Controller"]

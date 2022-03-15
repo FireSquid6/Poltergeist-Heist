@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Movable
 class_name Player
 
 enum STATES {
@@ -9,22 +9,20 @@ enum STATES {
 
 var state = STATES.IDLE setget state_set
 
-onready var velocity = Vector2(0,0)
-onready var on_floor = false
 export var accspd = 100
 export var deaccspd = 100
 export var maxspd = 300
 
 onready var can_jump = false
-onready var jumping = false
 export var jump_time = 0.2
 export var jump_spd = 400
-export var GRV = 30
+
+
+func _init():
+	pushable = true
 
 
 func _physics_process(delta):
-	on_floor = $FloorDetector.is_colliding() or $FloorDetector2.is_colliding()
-	
 	match state:
 		STATES.CONTROLLED:
 			# get input
@@ -49,7 +47,6 @@ func _physics_process(delta):
 				else:
 					velocity.x -= deaccspd * sign(velocity.x)
 			
-			
 			# VERTICAL MOVEMENT
 			# start jump if on floor and pressed
 			if on_floor:
@@ -57,32 +54,11 @@ func _physics_process(delta):
 				if jump:
 					on_jump()
 			# if already jumping
-			elif jumping:
+			elif !do_gravity:
 				if !jump:
-					jumping = false
-			# if not on the floor, just fall
-			elif !on_floor:
-				velocity.y += GRV
-			
-			# move and get new velocity
-			move_and_slide(velocity)
-			if get_slide_count() > 0:
-				for i in get_slide_count():
-					# icky bad gross code
-					var crate = get_slide_collision(i).collider as Crate
-					var player = get_slide_collision(i).collider as Player
-					if on_floor:
-						if crate and crate.pushable:
-							crate.push(Vector2(velocity.x, 0))
-						elif player and player.position.y <= position.y:
-							player.push(Vector2(velocity.x, 0))
-			
+					do_gravity = true
 			
 		STATES.IDLE:
-			# move vertically
-			if !on_floor:
-				velocity.y += GRV
-			
 			# decelerate
 			# check if velocity needs to snap to 0
 			if abs(velocity.x) <= deaccspd:
@@ -91,30 +67,24 @@ func _physics_process(delta):
 			else:
 				velocity.x -= deaccspd * sign(velocity.x)
 			
-			# move
-			velocity = move_and_slide(velocity)
-			
-	
-	$Label.text = str(velocity)
+		
+	process_movement()
+	$Label.text = str(velocity) + " " + str(position) + "\n" + str(on_floor)
 
-var text = str(velocity)
-
-func push(vel):
-	move_and_slide(vel)
 
 # called whenever the player jumps
 func on_jump():
 	velocity.y -= jump_spd
 	
-	jumping = true
 	can_jump = false
+	do_gravity = false
 	
 	$Timers/JumpTime.wait_time = jump_time
 	$Timers/JumpTime.start()
 
 
 func _on_JumpTime_timeout():
-	jumping = false
+	do_gravity = true
 
 
 func state_set(new_state):
@@ -129,8 +99,10 @@ func state_set(new_state):
 	
 	match state:
 		STATES.IDLE:
+			pushable = true
 			visible = true
 		STATES.CONTROLLED:
+			pushable = false
 			visible = true
 		STATES.COMBINED:
 			visible = false

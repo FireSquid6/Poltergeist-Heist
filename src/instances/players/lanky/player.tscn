@@ -3,35 +3,25 @@
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15, 31 )
+extents = Vector2( 15, 30 )
 
 [node name="Lanky" type="KinematicBody2D"]
-position = Vector2( -32, -64 )
 collision_layer = 2
 collision_mask = 7
 script = ExtResource( 1 )
 jump_time = 0.1
 
-[node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2( 31, 64 )
-enabled = true
-cast_to = Vector2( 0, 1 )
-collision_mask = 7
-
-[node name="FloorDetector2" type="RayCast2D" parent="."]
-position = Vector2( 1, 64 )
-enabled = true
-cast_to = Vector2( 0, 1 )
-collision_mask = 7
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -17, -17 )
+scale = Vector2( 1.5, 1.984 )
+polygon = PoolVector2Array( -10, -23.6895, -10, 8.56855, -9.37083, 8.56855, 11.3333, 8.56855, 11.3333, -23.6895 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, 33 )
+position = Vector2( -16, -30 )
 shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
-position = Vector2( -1, 15 )
-scale = Vector2( 1.5, 1.984 )
-polygon = PoolVector2Array( -10, -24, -10, 8.25812, 11.3333, 8.25812, 11.3333, -24 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Timers" type="Node" parent="."]
 
@@ -39,14 +29,14 @@ polygon = PoolVector2Array( -10, -24, -10, 8.25812, 11.3333, 8.25812, 11.3333, -
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
-margin_left = 10.0
-margin_top = -25.0
-margin_right = 50.0
-margin_bottom = -11.0
+margin_left = -40.0
+margin_top = -80.0
+margin_bottom = -66.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MergePosition" type="Position2D" parent="."]
+position = Vector2( -32, -64 )
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]
