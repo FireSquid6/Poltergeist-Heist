@@ -29,6 +29,7 @@ __meta__ = {
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -40.0
 margin_top = -80.0
 margin_bottom = -66.0

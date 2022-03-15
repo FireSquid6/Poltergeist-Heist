@@ -45,6 +45,7 @@ script = ExtResource( 5 )
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -40.0
 margin_top = -40.0
 margin_bottom = -26.0
