@@ -31,9 +31,11 @@ func switch_player(new_index):
 
 func split():
 	# move other players to combined
+	var dir = 1
 	for player in player_list:
-		player.position = combined_obj.position
+		player.position = Vector2(combined_obj.position.x + (16 * dir), combined_obj.position.y)
 		player.state = player.STATES.IDLE
+		dir *= -1
 	
 	# set the active player to control
 	player_list[player_selected].state = player_list[player_selected].STATES.CONTROLLED
@@ -71,7 +73,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("plr_merge"):
 		combined = !combined
 		if combined:
-			combine(player_list[player_selected].position)
+			combine(player_list[player_selected].position + player_list[player_selected].get_node("MergePosition").position)
 		else:
 			split()
 	
