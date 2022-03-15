@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Wild Jam #43"
-run/main_scene="res://scenes/level_template.tscn"
+run/main_scene="res://scenes/Level0.tscn"
 config/icon="res://icon.png"
 
 [audio]

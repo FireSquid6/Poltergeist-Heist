@@ -100,7 +100,7 @@ func _physics_process(delta):
 var text = str(velocity)
 
 func push(vel):
-	velocity = move_and_slide(vel)
+	move_and_slide(vel)
 
 # called whenever the player jumps
 func on_jump():
