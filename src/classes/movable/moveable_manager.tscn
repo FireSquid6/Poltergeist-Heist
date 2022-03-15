@@ -3,7 +3,7 @@
 [ext_resource path="res://classes/movable/moveable_manager.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15, 0.5 )
+extents = Vector2( 40.5, 0.5 )
 
 [node name="MoveableManager" type="Node"]
 script = ExtResource( 1 )

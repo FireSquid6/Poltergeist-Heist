@@ -3,7 +3,7 @@ class_name Movable
 
 
 var velocity = Vector2(0, 0)
-var on_floor = 0
+var on_floor = false
 var do_gravity = true
 var pushable = false
 
@@ -18,12 +18,23 @@ func process_movement():
 	if !on_floor and do_gravity:
 		velocity.y += GRV
 	
-	#
-
-
-func push(vel):
-	move_and_slide(vel)
-
-
-func on_floor():
+	# move
+	velocity = move_and_slide(velocity, Vector2.UP)
 	
+	# push
+	for i in get_slide_count():
+		var collided = get_slide_collision(i)
+		if collided as Movable:
+			if collided.pushable:
+				collided.push(velocity)
+		
+	# get on floor
+	on_floor = is_on_floor()
+
+
+func push(vel: Vector2, force: bool) -> bool:
+	if pushable and !force:
+		velocity += vel
+		return true
+	else:
+		return false
