@@ -13,6 +13,14 @@ onready var manager = get_node("MoveableManager")
 onready var floor_detector = get_node("MoveableManage/FloorDetector")
 
 
+func setup():
+	set_safe_margin(0.0001)
+
+
+func _ready():
+	setup()
+
+
 func process_movement():
 	# fall
 	if !on_floor and do_gravity:
