@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://instances/level_entities/button/button.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "Movable",
+"language": "GDScript",
+"path": "res://classes/movable/moveable.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://instances/players/lanky/player.gd"
@@ -32,6 +37,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Crate": "",
 "GameButton": "",
+"Movable": "",
 "Player": "",
 "Toggleable": ""
 }
@@ -39,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Wild Jam #43"
-run/main_scene="res://scenes/Level0.tscn"
+run/main_scene="res://scenes/level_0.tscn"
 config/icon="res://icon.png"
 
 [audio]

@@ -3,7 +3,7 @@
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15, 31 )
+extents = Vector2( 15, 30 )
 
 [node name="Lanky" type="KinematicBody2D"]
 position = Vector2( -32, -64 )
@@ -24,14 +24,14 @@ enabled = true
 cast_to = Vector2( 0, 1 )
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 16, 33 )
-shape = SubResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
-position = Vector2( -1, 15 )
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 15, 47 )
 scale = Vector2( 1.5, 1.984 )
-polygon = PoolVector2Array( -10, -24, -10, 8.25812, 11.3333, 8.25812, 11.3333, -24 )
+polygon = PoolVector2Array( -10, -24.1935, -10, 8.56855, -9.37083, 8.56855, 11.3333, 8.56855, 11.3333, -24.1935 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 16, 34 )
+shape = SubResource( 1 )
 
 [node name="Timers" type="Node" parent="."]
 
@@ -48,5 +48,6 @@ __meta__ = {
 }
 
 [node name="MergePosition" type="Position2D" parent="."]
+position = Vector2( 0, -1 )
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]
