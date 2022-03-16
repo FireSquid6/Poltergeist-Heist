@@ -1,7 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/sounds/sfx/jump/medium_jump.wav" type="AudioStream" id=2]
+[ext_resource path="res://instances/players/lanky/lanky_sprite.gd" type="Script" id=3]
+[ext_resource path="res://resources/textures/armor1.png" type="Texture" id=4]
+[ext_resource path="res://resources/textures/armor2.png" type="Texture" id=5]
+[ext_resource path="res://resources/textures/armor3.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walking",
+"speed": 7.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 30 )
@@ -12,10 +29,12 @@ collision_mask = 7
 script = ExtResource( 1 )
 jump_time = 0.1
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( -17, -17 )
-scale = Vector2( 1.5, 1.984 )
-polygon = PoolVector2Array( -10, -23.6895, -10, 8.56855, -9.37083, 8.56855, 11.3333, 8.56855, 11.3333, -23.6895 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -16, -32 )
+frames = SubResource( 2 )
+animation = "idle"
+playing = true
+script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -16, -30 )
