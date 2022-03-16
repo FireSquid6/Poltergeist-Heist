@@ -1,8 +1,6 @@
 extends Movable
 class_name Crate
 
-export var heavy = false
-
 
 func _init():
 	pushable = true

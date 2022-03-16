@@ -1,3 +1,1 @@
 extends StaticBody2D
-
-

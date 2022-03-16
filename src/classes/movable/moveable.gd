@@ -7,6 +7,8 @@ var on_floor = false
 var do_gravity = true
 var pushable = false
 
+export(bool) var heavy = false
+
 const GRV = 30
 
 onready var manager = get_node("MoveableManager")

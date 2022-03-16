@@ -3,7 +3,7 @@ extends Node2D
 
 onready var player_list = []
 onready var player_selected = 0
-onready var indicator = get_node("Indicator")
+onready var audio = get_node("Audio")
 onready var combined = false
 onready var combined_obj = null
 
@@ -13,7 +13,7 @@ func _ready():
 	# get all children
 	var children = get_children()
 	for child in children:
-		if child != indicator:
+		if child != audio:
 			player_list.append(child)
 	
 	# switch to the first player
@@ -30,6 +30,8 @@ func switch_player(new_index):
 
 
 func split():
+	$Audio/Combine.play()
+	
 	# move other players to combined
 	var dir = 1
 	for player in player_list:
@@ -45,6 +47,8 @@ func split():
 
 
 func combine(combine_to):
+	$Audio/Combine.play()
+	
 	# deactivate all players
 	for player in player_list:
 		player.state = player.STATES.COMBINED

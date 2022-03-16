@@ -2,5 +2,5 @@
 
 [ext_resource path="res://instances/transition/transition.gd" type="Script" id=1]
 
-[node name="CanvasModulate" type="CanvasModulate"]
+[node name="Transition" type="CanvasModulate"]
 script = ExtResource( 1 )

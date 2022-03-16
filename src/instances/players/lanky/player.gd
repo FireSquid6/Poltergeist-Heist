@@ -23,6 +23,8 @@ func _init():
 
 
 func _physics_process(delta):
+	heavy = Global.players_combined
+	
 	match state:
 		STATES.CONTROLLED:
 			# get input
@@ -75,6 +77,8 @@ func _physics_process(delta):
 # called whenever the player jumps
 func on_jump():
 	velocity.y -= jump_spd
+	
+	$Audio/Jump.play()
 	
 	can_jump = false
 	do_gravity = false

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/textures/restart.png" type="Texture" id=1]
+[ext_resource path="res://instances/hud/restart.gd" type="Script" id=2]
+[ext_resource path="res://instances/hud/Title.gd" type="Script" id=3]
+[ext_resource path="res://resources/fonts/default_font.tres" type="DynamicFont" id=4]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -64.0
+margin_bottom = 64.0
+color = Color( 0.396078, 0.396078, 0.396078, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="TextureRect" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_right = 256.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 4 )
+text = "Level 1"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="ColorRect/Restart" to="ColorRect/Restart" method="_on_Restart_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/Restart" to="ColorRect/Restart" method="_on_Restart_mouse_exited"]

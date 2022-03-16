@@ -15,19 +15,22 @@ tile_data = PoolIntArray( -393225, 0, 0, -393224, 0, 1, -393223, 0, 1, -393222, 
 [node name="Button" parent="Entities" index="0" instance=ExtResource( 2 )]
 
 [node name="RigidBody2D" parent="Entities" index="1" instance=ExtResource( 7 )]
-position = Vector2( 160, -152 )
+position = Vector2( 128, -128 )
 
-[node name="RigidBody2D2" parent="Entities" index="2" instance=ExtResource( 7 )]
-position = Vector2( 192, -152 )
+[node name="RigidBody2D6" parent="Entities" index="2" instance=ExtResource( 7 )]
+position = Vector2( 160, -128 )
 
-[node name="RigidBody2D3" parent="Entities" index="3" instance=ExtResource( 7 )]
-position = Vector2( 224, -152 )
+[node name="RigidBody2D2" parent="Entities" index="3" instance=ExtResource( 7 )]
+position = Vector2( 192, -128 )
 
-[node name="RigidBody2D4" parent="Entities" index="4" instance=ExtResource( 7 )]
-position = Vector2( 256, -152 )
+[node name="RigidBody2D3" parent="Entities" index="4" instance=ExtResource( 7 )]
+position = Vector2( 224, -128 )
 
-[node name="RigidBody2D5" parent="Entities" index="5" instance=ExtResource( 7 )]
-position = Vector2( 160, -72 )
+[node name="RigidBody2D4" parent="Entities" index="5" instance=ExtResource( 7 )]
+position = Vector2( 256, -128 )
+
+[node name="RigidBody2D5" parent="Entities" index="6" instance=ExtResource( 7 )]
+position = Vector2( 160, -64 )
 
 [node name="Chair" parent="Decoration" index="0" instance=ExtResource( 4 )]
 position = Vector2( -152, -16 )
@@ -42,7 +45,7 @@ position = Vector2( -200, -16 )
 [node name="Torch" parent="Decoration" index="3" instance=ExtResource( 6 )]
 position = Vector2( -200, -72 )
 
-[node name="Lanky" parent="Controller" index="1"]
+[node name="Lanky" parent="Controller" index="0"]
 position = Vector2( -80, -56 )
 
 [editable path="Controller"]

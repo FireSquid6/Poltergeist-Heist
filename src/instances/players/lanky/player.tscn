@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
+[ext_resource path="res://resources/sounds/sfx/jump/medium_jump.wav" type="AudioStream" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 30 )
@@ -39,5 +40,10 @@ __meta__ = {
 
 [node name="MergePosition" type="Position2D" parent="."]
 position = Vector2( -32, -64 )
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 2 )
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]
