@@ -28,12 +28,7 @@ extents = Vector2( 15, 30 )
 collision_layer = 2
 collision_mask = 7
 script = ExtResource( 1 )
-heavy = null
-accspd = null
-deaccspd = null
-maxspd = null
 jump_time = 0.1
-jump_spd = null
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -16, -32 )
@@ -72,6 +67,5 @@ stream = ExtResource( 2 )
 
 [node name="Walk" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 7 )
-autoplay = true
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]

@@ -20,7 +20,6 @@ export var jump_spd = 400
 
 func _init():
 	pushable = true
-	$Audio/Jump.
 
 
 func _physics_process(delta):
@@ -31,6 +30,13 @@ func _physics_process(delta):
 			# get input
 			var move = int(Input.is_action_pressed("plr_right")) - int(Input.is_action_pressed("plr_left"))
 			var jump = Input.is_action_pressed("plr_jump")
+			
+			# play walking sound
+			if move != 0 and on_floor:
+				if !$Audio/Walk.playing:
+					$Audio/Walk.play()
+			else:
+				$Audio/Walk.stop()
 			
 			# move
 			# if moving, accelerate
@@ -56,11 +62,6 @@ func _physics_process(delta):
 				velocity.y = 0
 				if jump:
 					on_jump()
-				
-				if move != 0:
-					$Audio/Walk.playing = true
-				elif move == 0:
-					$Audio/Walk.playing = false
 			# if already jumping
 			elif !do_gravity:
 				if !jump:
@@ -98,6 +99,7 @@ func _on_JumpTime_timeout():
 
 
 func state_set(new_state):
+	$Audio/Walk.stop()
 	state = new_state
 	
 	if state == STATES.COMBINED:

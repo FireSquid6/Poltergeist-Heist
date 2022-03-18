@@ -10,6 +10,7 @@ signal timer_stopped()
 
 func _physics_process(delta):
 	if pressed:
+		$Press.play()
 		$Label.text = str(floor($Timer.time_left))
 	else:
 		$Label.text = str(floor(time))
@@ -23,6 +24,7 @@ func _physics_process(delta):
 
 
 func _on_Timer_timeout():
+	$Press.play()
 	emit_signal("timer_stopped")
 	pressed = false
 	$AnimatedSprite.stop()

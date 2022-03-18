@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://instances/decoration/tutorials.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/level_entities/button/button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://instances/level_entities/crate/crate.tscn" type="PackedScene" id=3]
 [ext_resource path="res://instances/level_entities/toggleables/door/door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/level_template.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/level_s.tscn" type="PackedScene" id=6]
 [ext_resource path="res://instances/level_entities/gate/gate.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resources/tileset.tres" type="TileSet" id=8]
 [ext_resource path="res://scenes/level_3.tscn" type="PackedScene" id=9]
@@ -34,7 +35,7 @@ next_level = ExtResource( 9 )
 
 [node name="Gate2" parent="Gates" index="1" instance=ExtResource( 7 )]
 position = Vector2( -768, -288 )
-next_level = ExtResource( 9 )
+next_level = ExtResource( 6 )
 
 [node name="Lanky" parent="Controller" index="0"]
 position = Vector2( -40, -88 )
