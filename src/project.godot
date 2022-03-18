@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://instances/players/lanky/player.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "Toggleable",
 "language": "GDScript",
 "path": "res://instances/level_entities/toggleables/toggleable.gd"
@@ -44,7 +44,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Wild Jam #43"
+config/name="Mimic and Cursed"
+config/description="A puzzle game about a ghost controlling a suit of armor and a chest."
 run/main_scene="res://scenes/level_1.tscn"
 config/icon="res://icon.png"
 

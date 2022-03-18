@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/close_door.wav-e2dba58f81d62fe0839f425a85404f2e.sample"
+
+[deps]
+
+source_file="res://resources/sounds/sfx/close_door.wav"
+dest_files=[ "res://.import/close_door.wav-e2dba58f81d62fe0839f425a85404f2e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -35,9 +35,9 @@ func split():
 	# move other players to combined
 	var dir = 1
 	for player in player_list:
-		player.position = Vector2(combined_obj.position.x + (16 * dir), combined_obj.position.y)
+		player.position = Vector2(combined_obj.position.x + (-32 * dir), combined_obj.position.y)
 		player.state = player.STATES.IDLE
-		dir *= -1
+		dir *= 0
 	
 	# set the active player to control
 	player_list[player_selected].state = player_list[player_selected].STATES.CONTROLLED

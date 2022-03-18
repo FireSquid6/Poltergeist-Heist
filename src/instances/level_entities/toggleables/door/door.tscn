@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://instances/level_entities/toggleables/door/door.gd" type="Script" id=1]
 [ext_resource path="res://resources/textures/door1.png" type="Texture" id=2]
 [ext_resource path="res://resources/textures/door2.png" type="Texture" id=3]
+[ext_resource path="res://resources/sounds/sfx/close_door.wav" type="AudioStream" id=4]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -13,7 +14,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.15625, 128 )
+extents = Vector2( 8, 128 )
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource( 1 )
@@ -24,3 +25,10 @@ frames = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1, 0.25 )
 shape = SubResource( 1 )
+
+[node name="Open" type="AudioStreamPlayer" parent="."]
+volume_db = 6.0
+
+[node name="Close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 6.0

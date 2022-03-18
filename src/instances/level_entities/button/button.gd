@@ -29,6 +29,7 @@ func _physics_process(_delta):
 		if pressed:
 			emit_signal("pressed")
 			$AnimatedSprite.frame = 1
+			$Press.play()
 		else:
 			emit_signal("released")
 			$AnimatedSprite.frame = 0

@@ -27,13 +27,15 @@ position = Vector2( 32, 240 )
 
 [node name="Torch" parent="Decoration" index="3" instance=ExtResource( 3 )]
 position = Vector2( -136, 136 )
-frame = 0
+frame = 2
 
 [node name="Torch3" parent="Decoration" index="4" instance=ExtResource( 3 )]
 position = Vector2( 488, -120 )
+frame = 1
 
 [node name="Torch2" parent="Decoration" index="5" instance=ExtResource( 3 )]
 position = Vector2( 96, 136 )
+frame = 1
 
 [node name="Candelebra" parent="Decoration" index="6" instance=ExtResource( 5 )]
 position = Vector2( -176, -32 )

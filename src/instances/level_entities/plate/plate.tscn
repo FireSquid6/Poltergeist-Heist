@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/textures/plate1.png" type="Texture" id=1]
+[ext_resource path="res://resources/textures/plate2.png" type="Texture" id=2]
+[ext_resource path="res://instances/level_entities/plate/plate.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 0.5 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://resources/fonts/Retro Gaming.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 15
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = SubResource( 1 )
+
+[node name="Plate" type="Area2D"]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -16, -0.5 )
+shape = SubResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.447059, 0.556863, 0.6, 1 )
+polygon = PoolVector2Array( -4, -1, -28, -1, -32, 0, 0, 0 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -16, 16 )
+frames = SubResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -32.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 3 )
+text = "5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

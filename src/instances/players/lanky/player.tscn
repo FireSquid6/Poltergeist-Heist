@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/sounds/sfx/jump/medium_jump.wav" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://resources/textures/armor1.png" type="Texture" id=4]
 [ext_resource path="res://resources/textures/armor2.png" type="Texture" id=5]
 [ext_resource path="res://resources/textures/armor3.png" type="Texture" id=6]
+[ext_resource path="res://resources/sounds/sfx/walking/walking_medium.wav" type="AudioStream" id=7]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -27,7 +28,12 @@ extents = Vector2( 15, 30 )
 collision_layer = 2
 collision_mask = 7
 script = ExtResource( 1 )
+heavy = null
+accspd = null
+deaccspd = null
+maxspd = null
 jump_time = 0.1
+jump_spd = null
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -16, -32 )
@@ -58,11 +64,14 @@ __meta__ = {
 }
 
 [node name="MergePosition" type="Position2D" parent="."]
-position = Vector2( -32, -64 )
 
 [node name="Audio" type="Node" parent="."]
 
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 2 )
+
+[node name="Walk" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 7 )
+autoplay = true
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]

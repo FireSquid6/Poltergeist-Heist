@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/sounds/sfx/jump/big_jump.wav" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://resources/textures/combined2.png" type="Texture" id=4]
 [ext_resource path="res://resources/textures/combined1.png" type="Texture" id=5]
 [ext_resource path="res://instances/players/lanky/lanky_sprite.gd" type="Script" id=6]
+[ext_resource path="res://resources/sounds/sfx/walking/walking_big.wav" type="AudioStream" id=7]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -31,14 +32,14 @@ jump_time = 0.01
 jump_spd = 200
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -31, -32 )
+position = Vector2( -22, -32 )
 frames = SubResource( 2 )
 animation = "idle"
 playing = true
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -31, -29.5 )
+position = Vector2( -22, -29.5 )
 shape = SubResource( 1 )
 
 [node name="Timers" type="Node" parent="."]
@@ -59,5 +60,8 @@ __meta__ = {
 
 [node name="Jump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 2 )
+
+[node name="Walk" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 7 )
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]
