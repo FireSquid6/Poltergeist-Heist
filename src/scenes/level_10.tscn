@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/level_template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://instances/level_entities/button/button.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://instances/decoration/table.tscn" type="PackedScene" id=6]
 [ext_resource path="res://instances/decoration/torch.tscn" type="PackedScene" id=7]
 [ext_resource path="res://instances/decoration/candelebra.tscn" type="PackedScene" id=8]
+[ext_resource path="res://instances/light/light.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/end.tscn" type="PackedScene" id=10]
+[ext_resource path="res://instances/level_entities/gate/gate.tscn" type="PackedScene" id=11]
 
 [node name="Level" instance=ExtResource( 1 )]
 level_name = "Level Ten"
@@ -20,20 +23,22 @@ position = Vector2( -440, 176 )
 
 [node name="Candelebra" parent="Decoration" index="1" instance=ExtResource( 8 )]
 position = Vector2( -368, 160 )
+frame = 1
 
 [node name="Candelebra2" parent="Decoration" index="2" instance=ExtResource( 8 )]
 position = Vector2( -512, -120 )
+frame = 1
 
 [node name="Torch" parent="Decoration" index="3" instance=ExtResource( 7 )]
 position = Vector2( -176, -160 )
-frame = 3
+frame = 0
 
 [node name="Torch2" parent="Decoration" index="4" instance=ExtResource( 7 )]
 position = Vector2( 176, -160 )
+frame = 3
 
 [node name="Torch3" parent="Decoration" index="5" instance=ExtResource( 7 )]
 position = Vector2( 0, -160 )
-frame = 1
 
 [node name="Platform" parent="Entities" index="0" instance=ExtResource( 3 )]
 position = Vector2( 160, -32 )
@@ -106,17 +111,21 @@ position = Vector2( 272, -96 )
 position = Vector2( -528, 224 )
 heavy = true
 
+[node name="Gate" parent="Gates" index="0" instance=ExtResource( 11 )]
+position = Vector2( 768, -128 )
+next_level = ExtResource( 10 )
+
 [node name="Lanky" parent="Controller" index="0"]
-position = Vector2( -64, 72 )
+position = Vector2( -80, 72 )
 
 [node name="Stubby" parent="Controller" index="1"]
 position = Vector2( 136, 72 )
 
-[connection signal="frame_changed" from="Decoration/Candelebra" to="Decoration/Candelebra/FlickeringLight" method="frame_changed"]
-[connection signal="frame_changed" from="Decoration/Candelebra2" to="Decoration/Candelebra2/FlickeringLight" method="frame_changed"]
-[connection signal="frame_changed" from="Decoration/Torch" to="Decoration/Torch/FlickeringLight" method="frame_changed"]
-[connection signal="frame_changed" from="Decoration/Torch2" to="Decoration/Torch2/FlickeringLight" method="frame_changed"]
-[connection signal="frame_changed" from="Decoration/Torch3" to="Decoration/Torch3/FlickeringLight" method="frame_changed"]
+[node name="Light2D" parent="." index="9" instance=ExtResource( 9 )]
+position = Vector2( 680, -136 )
+scale = Vector2( 0.734375, 0.59375 )
+energy = 2.27
+
 [connection signal="pressed" from="Entities/Button" to="Entities/Door" method="turn_on"]
 [connection signal="released" from="Entities/Button" to="Entities/Door" method="turn_off"]
 

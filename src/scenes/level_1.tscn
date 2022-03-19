@@ -29,11 +29,9 @@ position = Vector2( -136, 136 )
 
 [node name="Torch3" parent="Decoration" index="4" instance=ExtResource( 3 )]
 position = Vector2( 488, -120 )
-frame = 2
 
 [node name="Torch2" parent="Decoration" index="5" instance=ExtResource( 3 )]
 position = Vector2( 96, 136 )
-frame = 2
 
 [node name="Candelebra" parent="Decoration" index="6" instance=ExtResource( 5 )]
 position = Vector2( -176, -32 )
@@ -51,10 +49,5 @@ position = Vector2( -48, 8 )
 
 [node name="Stubby" parent="Controller" index="1"]
 position = Vector2( 104, 8 )
-
-[connection signal="frame_changed" from="Decoration/Torch" to="Decoration/Torch/FlickeringLight" method="frame_changed"]
-[connection signal="frame_changed" from="Decoration/Torch3" to="Decoration/Torch3/FlickeringLight" method="frame_changed"]
-[connection signal="frame_changed" from="Decoration/Torch2" to="Decoration/Torch2/FlickeringLight" method="frame_changed"]
-[connection signal="frame_changed" from="Decoration/Candelebra" to="Decoration/Candelebra/FlickeringLight" method="frame_changed"]
 
 [editable path="Controller"]
