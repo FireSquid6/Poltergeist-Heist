@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/sounds/sfx/jump/big_jump.wav" type="AudioStream" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://resources/textures/combined1.png" type="Texture" id=5]
 [ext_resource path="res://instances/players/lanky/lanky_sprite.gd" type="Script" id=6]
 [ext_resource path="res://resources/sounds/sfx/walking/walking_big.wav" type="AudioStream" id=7]
+[ext_resource path="res://instances/light/light.tscn" type="PackedScene" id=8]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -63,5 +64,9 @@ stream = ExtResource( 2 )
 
 [node name="Walk" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 7 )
+
+[node name="Light2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( -24, -30 )
+scale = Vector2( 0.34375, 0.367188 )
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]

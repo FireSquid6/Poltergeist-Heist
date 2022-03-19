@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://instances/level_entities/crate/crate.gd" type="Script" id=1]
 [ext_resource path="res://instances/level_entities/crate/crate_sprite.gd" type="Script" id=2]
 [ext_resource path="res://resources/textures/crate1.png" type="Texture" id=3]
 [ext_resource path="res://resources/textures/crate2.png" type="Texture" id=4]
+[ext_resource path="res://instances/light/light.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -38,3 +39,7 @@ margin_bottom = -32.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Light2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( -16, -16 )
+scale = Vector2( 0.3125, 0.3125 )

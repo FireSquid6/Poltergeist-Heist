@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/textures/candelebra2.png" type="Texture" id=1]
 [ext_resource path="res://resources/textures/candelebra1.png" type="Texture" id=2]
+[ext_resource path="res://instances/decoration/flickering_light/flickering_light.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -14,5 +15,11 @@ animations = [ {
 [node name="Candelebra" type="AnimatedSprite"]
 position = Vector2( 0, -32 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
+
+[node name="FlickeringLight" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -24 )
+scale = Vector2( 0.25, 0.226563 )
+color = Color( 1, 0.784314, 0.529412, 1 )
+
+[connection signal="frame_changed" from="." to="FlickeringLight" method="frame_changed"]

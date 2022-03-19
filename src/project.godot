@@ -46,7 +46,7 @@ _global_script_class_icons={
 
 config/name="Mimic and Cursed"
 config/description="A puzzle game about a ghost controlling a suit of armor and a chest."
-run/main_scene="res://scenes/level_1.tscn"
+run/main_scene="res://title_screen/title_screen.tscn"
 config/icon="res://icon.png"
 
 [audio]

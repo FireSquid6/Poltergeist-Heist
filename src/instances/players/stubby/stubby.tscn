@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://instances/players/lanky/player.gd" type="Script" id=1]
 [ext_resource path="res://resources/textures/chest1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://instances/players/stubby/stubby_sprite.gd" type="Script" id=5]
 [ext_resource path="res://resources/sounds/sfx/jump/Small_jump.wav" type="AudioStream" id=6]
 [ext_resource path="res://resources/sounds/sfx/walking/walking_short.wav" type="AudioStream" id=7]
+[ext_resource path="res://instances/light/light.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 12.5 )
@@ -64,5 +65,9 @@ stream = ExtResource( 6 )
 
 [node name="Walk" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 7 )
+
+[node name="Light2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( -16, -16 )
+scale = Vector2( 0.3125, 0.3125 )
 
 [connection signal="timeout" from="Timers/JumpTime" to="." method="_on_JumpTime_timeout"]
